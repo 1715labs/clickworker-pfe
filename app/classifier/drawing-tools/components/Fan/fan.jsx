@@ -17,7 +17,7 @@ class Fan extends React.Component {
       y,
       radius: 0,
       rotation: 0,
-      spread: 30
+      spread: 0
     };
   }
 
@@ -46,6 +46,8 @@ class Fan extends React.Component {
     const theta = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
     return theta < 0 ? 360 + theta : theta;
   }
+
+  static options = ['initialSpread']
 
   handleDrag(e, d) {
     const { mark } = this.props;
@@ -77,8 +79,9 @@ class Fan extends React.Component {
   }
 
   render() {
-    const { disabled, getScreenCurrentTransformationMatrix, mark, scale, selected } = this.props;
-    const { x, y, rotation, radius, spread } = mark;
+    const { disabled, getScreenCurrentTransformationMatrix, initialSpread, mark, scale, selected } = this.props;
+    const { x, y, rotation, radius } = mark;
+    const spread = mark.spread || initialSpread
     const tanSpread = Math.tan(spread * (Math.PI / 360));
     const spreadRadius = (radius * tanSpread) / (1 + tanSpread);
     const spreadX = radius - spreadRadius;
@@ -169,6 +172,7 @@ Fan.propTypes = {
   disabled: PropTypes.bool,
   getEventOffset: PropTypes.func,
   getScreenCurrentTransformationMatrix: PropTypes.func.isRequired,
+  initialSpread: PropTypes.number,
   mark: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,
@@ -187,6 +191,7 @@ Fan.propTypes = {
 Fan.defaultProps = {
   disabled: false,
   getEventOffset: () => null,
+  initialSpread: 5,
   onChange: () => true,
   scale: {
     horizontal: 0,

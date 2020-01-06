@@ -96,6 +96,7 @@ module.exports = createReactClass
                 details: details
                 color: toolDescription.color
                 size: toolDescription.size
+                initialSpread: toolDescription.initialSpread
 
               if toolDescription.type == 'pointGrid'
                 toolProps.rows = Number.parseInt(toolDescription.rows, 10)

@@ -204,6 +204,23 @@ module.exports = createReactClass
                       </div>
                     else
                       null
+
+                    if 'initialSpread' in options
+                      <div key="minSpread" className="workflow-choice-setting">
+                        <AutoSave resource={@props.workflow}>
+                          <label>Initial Spread Angle{' '}
+                            <input
+                              name="#{@props.taskPrefix}.#{choicesKey}.#{index}.initialSpread"
+                              onChange={handleChange}
+                              type='number'
+                              value={choice.initialSpread || 5}
+                            />
+                          </label>
+                        </AutoSave>
+                      </div>
+                    else
+                      null
+
                     if 'grid' in options
                       <GridEditor
                         key="gridoptions"
