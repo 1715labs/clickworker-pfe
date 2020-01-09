@@ -1,15 +1,26 @@
 FROM node:10.17.0-alpine
 
-WORKDIR /src
+RUN mkdir /src
 RUN chown -R node:node /src
-
+WORKDIR /src
 RUN apk add --no-cache git
-
 USER node
 
-ADD package.json /src/
-ADD package-lock.json /src/
-
+COPY package.json /src/
+COPY package-lock.json /src/
 RUN npm install --unsafe-perm
 
-ADD . /src/
+COPY . /src/
+
+RUN NODE_ENV=production npm run _build
+
+
+
+FROM amazonlinux:latest
+RUN yum -y install awscli
+
+RUN mkdir /dist
+COPY --from=0 /src/dist /dist
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+RUN aws s3 sync /dist s3://clickworker-pfe.1715labs.com
