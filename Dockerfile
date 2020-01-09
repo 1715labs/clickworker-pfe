@@ -21,5 +21,3 @@ RUN yum -y install awscli
 
 RUN mkdir /dist
 COPY --from=0 /src/dist /dist
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
