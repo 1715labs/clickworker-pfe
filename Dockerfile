@@ -23,4 +23,3 @@ RUN mkdir /dist
 COPY --from=0 /src/dist /dist
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
-RUN aws s3 sync /dist s3://clickworker-pfe.1715labs.com
