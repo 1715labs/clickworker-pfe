@@ -9,4 +9,12 @@ services:
         AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
         AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - /src/node_modules
+       - /src/node_modules
+  deploy:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: aws s3 sync /dist s3://clickworker-pfe.1715labs.com
+    args:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
