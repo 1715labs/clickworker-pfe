@@ -126,7 +126,7 @@ const testWorkflow = {
   }
 };
 
-describe('WorldWideTelescope render without incomplete annotations', function () {
+xdescribe('WorldWideTelescope render without incomplete annotations', function () {
   it('will render an empty div with no annotations', function() {
     const page = shallow(<WorldWideTelescope subject={testSubject} />);
     assert.equal(page.find('div').children().length, 0)
