@@ -9,13 +9,18 @@ import TalkLink from './components/TalkLink';
 export const ButtonsWrapper = styled.span`
   display: flex;
   width: 100%;
-  
+
   > a:first-of-type, > div:first-of-type, > span:first-of-type {
     margin-right: 1ch;
   }
 `;
 
 export default function TaskNavButtons(props) {
+
+  // We need to disable Talk buttons so Clickworkers can't navigate themselves
+  // away by accident (and lose the query params that identify them).
+  const clickworkerDisableTalk = true
+
   if (props.showNextButton) {
     return (
       <ButtonsWrapper>
@@ -37,13 +42,13 @@ export default function TaskNavButtons(props) {
   if (props.completed) {
     return (
       <ButtonsWrapper>
-        <TalkLink
+        {!clickworkerDisableTalk && <TalkLink
           disabled={false}
           onClick={props.nextSubject}
           projectSlug={props.project.slug}
           subjectId={props.subject.id}
           translateContent="classifier.talk"
-        />
+        />}
         <NextButton
           autoFocus={props.autoFocus}
           disabled={false}
@@ -60,7 +65,7 @@ export default function TaskNavButtons(props) {
           areAnnotationsNotPersisted={props.areAnnotationsNotPersisted}
           onClick={props.destroyCurrentAnnotation}
         />}
-      {props.showDoneAndTalkLink &&
+      {props.showDoneAndTalkLink && !clickworkerDisableTalk &&
         <TalkLink
           disabled={props.waitingForAnswer}
           onClick={props.completeClassification}

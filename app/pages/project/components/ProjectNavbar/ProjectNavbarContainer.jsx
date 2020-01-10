@@ -77,17 +77,19 @@ class ProjectNavbarContainer extends Component {
     const underReview = this.props.project.beta_approved;
 
     return (
-      <ProjectNavbar
-        avatarSrc={avatarSrc}
-        backgroundSrc={backgroundSrc}
-        launched={launched}
-        navLinks={navLinks}
-        project={this.props.project}
-        projectTitle={projectTitle}
-        projectLink={projectLink}
-        redirect={redirect}
-        underReview={underReview}
-      />
+      <div className="project-layout__navbar">
+        <ProjectNavbar
+          avatarSrc={avatarSrc}
+          backgroundSrc={backgroundSrc}
+          launched={launched}
+          navLinks={navLinks}
+          project={this.props.project}
+          projectTitle={projectTitle}
+          projectLink={projectLink}
+          redirect={redirect}
+          underReview={underReview}
+        />
+      </div>
     );
   }
 }

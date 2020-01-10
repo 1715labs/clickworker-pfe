@@ -83,8 +83,8 @@ describe('TaskNavButtons', function() {
       expect(wrapper.find(ButtonsWrapper)).to.have.lengthOf(1);
     });
 
-    it('should render a TalkLink component', function () {
-      expect(wrapper.find('TalkLink')).to.have.lengthOf(1);
+    it('should not render a TalkLink component', function () {
+      expect(wrapper.find('TalkLink')).to.have.lengthOf(0);
     });
   });
 
@@ -107,13 +107,10 @@ describe('TaskNavButtons', function() {
       expect(wrapper.find('BackButton')).to.have.lengthOf(1);
     });
 
-    it('should not render a TalkLink component if props.showDoneAndTalkLink is false', function() {
+    it('should not render a TalkLink component', function() {
       expect(wrapper.find('TalkLink')).to.have.lengthOf(0);
-    });
-
-    it('should render a TalkLink component if props.showDoneAndTalkLink is true', function () {
       wrapper.setProps({ showDoneAndTalkLink: true });
-      expect(wrapper.find('TalkLink')).to.have.lengthOf(1);
+      expect(wrapper.find('TalkLink')).to.have.lengthOf(0);
     });
 
     it('should disable the Done button when waiting for a required answer.', function () {
