@@ -1,23 +1,13 @@
-FROM node:10.17.0-alpine
+FROM 1715labs/build-pfe:latest
 
-RUN mkdir /src
-RUN chown -R node:node /src
 WORKDIR /src
-RUN apk add --no-cache git
-USER node
-
-COPY package.json /src/
-COPY package-lock.json /src/
+COPY package.json .
+COPY package-lock.json .
 RUN npm install --unsafe-perm
-
 COPY . /src/
-
 RUN NODE_ENV=production npm run _build
 
-
-
-FROM amazonlinux:latest
-RUN yum -y install awscli
+FROM 1715labs/amazonlinux-cli:latest
 
 RUN mkdir /dist
 COPY --from=0 /src/dist /dist
