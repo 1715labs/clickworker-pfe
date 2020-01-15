@@ -6,6 +6,7 @@ A modified version of [Panoptes-Front-End](https://github.com/zooniverse/Panopte
 
 - Deploy process (see below)
 - Lots of UI elements have been hidden, mostly (but not exclusively) by CSS rules. This is to prevent Clickworker users from navigating away from the classify page, so that the Clickworker query parameters provided to make sure they get paid don't get stripped out.
+- The expected query parameters provided by Clickworker's iFrame-based platform are added to the classification in `classification.metadata.clickworker`.
 
 ## Deployment
 
