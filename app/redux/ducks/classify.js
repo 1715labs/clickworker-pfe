@@ -1,5 +1,6 @@
 import apiClient from 'panoptes-client/lib/api-client';
 import counterpart from 'counterpart';
+import qs from 'qs';
 import GridTool from '../../classifier/drawing-tools/grid';
 import { getSessionID } from '../../lib/session';
 import seenThisSession from '../../lib/seen-this-session';
@@ -64,6 +65,16 @@ function createNewClassification(project, workflow, subject, goldStandardMode, l
     newMetadata.interventions = newMetadata.interventions || {};
     newMetadata.interventions.uuid = lastInterventionUUID
   }
+
+  // Add the clickworker query parameters if they're present
+  const queryParams = qs.parse(location.search.slice(1));
+  if (queryParams && queryParams['task_id'] && queryParams['user_id']) {
+    newMetadata.clickworker = {
+      task_id: queryParams['task_id'],
+      user_id: queryParams['user_id'],
+    }
+  }
+
   const classification = apiClient.type('classifications').create({
     annotations: [],
     metadata: newMetadata,
