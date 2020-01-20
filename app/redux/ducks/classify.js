@@ -67,7 +67,7 @@ function createNewClassification(project, workflow, subject, goldStandardMode, l
   }
 
   // Add the clickworker query parameters if they're present
-  const queryParams = qs.parse(location.search.slice(1));
+  const queryParams = qs.parse(window.location.search.slice(1));
   if (queryParams && queryParams['task_id'] && queryParams['user_id']) {
     newMetadata.clickworker = {
       task_id: queryParams['task_id'],
