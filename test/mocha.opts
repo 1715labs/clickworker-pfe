@@ -2,3 +2,6 @@
 --require @babel/register
 --require coffee-script/register
 --require coffee-react/register
+--require test/setup.js
+--require test/enzyme-configuration.js
+--reporter min
