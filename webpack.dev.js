@@ -5,6 +5,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+var Dotenv = require('dotenv-webpack');
 
 var config = {
   mode: 'development',
@@ -27,6 +28,7 @@ var config = {
     filename: '[name].js',
   },
   plugins: [
+    new Dotenv(),
     new webpack.EnvironmentPlugin([
       'HEAD_COMMIT',
       'NODE_ENV',

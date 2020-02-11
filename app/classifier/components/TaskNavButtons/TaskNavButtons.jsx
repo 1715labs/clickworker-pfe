@@ -5,6 +5,7 @@ import NextButton from './components/NextButton';
 import DoneButton from './components/DoneButton';
 import BackButton from './components/BackButton';
 import TalkLink from './components/TalkLink';
+import qs from 'qs';
 
 export const ButtonsWrapper = styled.span`
   display: flex;
@@ -38,25 +39,27 @@ export default function TaskNavButtons(props) {
     );
   }
 
+
+
   // Shown on summary enabled workflows.
-  if (props.completed) {
-    return (
-      <ButtonsWrapper>
-        {!clickworkerDisableTalk && <TalkLink
-          disabled={false}
-          onClick={props.nextSubject}
-          projectSlug={props.project.slug}
-          subjectId={props.subject.id}
-          translateContent="classifier.talk"
-        />}
-        <NextButton
-          autoFocus={props.autoFocus}
-          disabled={false}
-          onClick={props.nextSubject}
-        />
-      </ButtonsWrapper>
-    );
-  }
+  // if (props.completed) {
+  //   return (
+  //     <ButtonsWrapper>
+  //       {!clickworkerDisableTalk && <TalkLink
+  //         disabled={false}
+  //         onClick={props.nextSubject}
+  //         projectSlug={props.project.slug}
+  //         subjectId={props.subject.id}
+  //         translateContent="classifier.talk"
+  //       />}
+  //       <NextButton
+  //         autoFocus={props.autoFocus}
+  //         disabled={false}
+  //         onClick={triggerRedirect}
+  //       />
+  //     </ButtonsWrapper>
+  //   );
+  // }
 
   return (
     <ButtonsWrapper>

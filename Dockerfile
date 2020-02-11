@@ -7,7 +7,7 @@ RUN npm install --unsafe-perm
 COPY . /src/
 RUN NODE_ENV=production npm run _build
 
-FROM 1715labs/amazonlinux-cli:latest
+FROM 1715labs/deploy-pfe:latest
 
 RUN mkdir /dist
 COPY --from=0 /src/dist /dist

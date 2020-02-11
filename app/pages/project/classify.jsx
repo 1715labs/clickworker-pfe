@@ -3,7 +3,7 @@ import apiClient from 'panoptes-client/lib/api-client';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-
+import qs from 'qs'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -25,6 +25,19 @@ import { zooTheme } from '../../theme';
 
 function onClassificationSaved(actualClassification) {
   Split.classificationCreated(actualClassification); // Metric log needs classification id
+  triggerRedirect(actualClassification)
+}
+
+function triggerRedirect(actualClassification) {
+  const queryParams = qs.parse(window.location.search.slice(1));
+  const newUrlQueryParams = {
+    'classification_id': actualClassification.id,
+    'job_id': queryParams['job_id'],
+    'task_id': queryParams['task_id'],
+    'user_id': queryParams['user_id'],
+  }
+  const newUrl = process.env.REDIRECT_URL + '?' + qs.stringify(newUrlQueryParams)
+  window.location = newUrl
 }
 
 function isPresent(val) {
@@ -363,13 +376,13 @@ const ConnectedClassifyPage = connect(mapStateToProps, mapDispatchToProps)(Proje
 
 function ConnectedClassifyPageWithWorkflow(props) {
   const workflowKey = props.workflow ? props.workflow.id : 'no-workflow';
-  
+
   //Check for WildCam Lab classrooms (see https://github.com/zooniverse/edu-api-front-end)
   const workflowFromUrl = props.location.query && props.location.query.workflow;
   const isProjectForClassrooms = (props.project && props.project.experimental_tools && props.project.experimental_tools.indexOf('wildcam classroom') > -1);
   const isUrlForClassrooms = props.location.query && props.location.query.classroom;
   const isClassroom = isProjectForClassrooms && isUrlForClassrooms && workflowFromUrl;
-  
+
   const WorkflowStrategy = isClassroom ? ClassroomWorkflowSelection : WorkflowSelection;
   return (
     <WorkflowStrategy
