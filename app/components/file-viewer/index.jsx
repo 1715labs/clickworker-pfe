@@ -6,6 +6,7 @@ import AudioPlayer from './audio-player';
 import TextViewer from './text-viewer';
 import ImageViewer from './image-viewer';
 import CanvasViewer from './canvas-viewer';
+import HTMLLinkViewer from "./html-link-viewer";
 
 function DefaultViewer(props) {
   return (
@@ -24,7 +25,8 @@ const VIEWERS = {
   text: TextViewer,
   video: VideoPlayer,
   audio: AudioPlayer,
-  application: CanvasViewer
+  application: CanvasViewer,
+  html: HTMLLinkViewer
 };
 
 function subjectViewerSelector(props) {
@@ -34,6 +36,11 @@ function subjectViewerSelector(props) {
     }
     // ... add other here if neccessary
   }
+
+  if (props.format.includes('html')) {
+    return VIEWERS.html;
+  }
+
   return VIEWERS[props.type] || DefaultViewer;
 }
 
