@@ -39,8 +39,6 @@ export default function TaskNavButtons(props) {
     );
   }
 
-
-
   // Shown on summary enabled workflows.
   // if (props.completed) {
   //   return (

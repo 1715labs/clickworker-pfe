@@ -75,7 +75,9 @@ describe('TaskNavButtons', function() {
       wrapper = mount(<TaskNavButtons completed={true} classification={classification} project={project} subject={subject} />, mockReduxStore);
     });
 
-    it('should render a NextButton component if props.completed is true and props.showNextButton is false', function () {
+    // We don't want to move on to the next subject at the moment, because we're using Clickworker
+    // on a single classification per job basis.
+    xit('should render a NextButton component if props.completed is true and props.showNextButton is false', function () {
       expect(wrapper.find('NextButton')).to.have.lengthOf(1);
     });
 
