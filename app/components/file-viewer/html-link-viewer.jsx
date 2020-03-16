@@ -29,7 +29,10 @@ class HTMLLinkViewer extends React.Component {
     // The `updateMetadata` action only does a shallow merge to the metadata property - if we want
     // to support multiple links in the future, we'd need to update this to do a deep merge.
     this.props.actions.classifier.updateMetadata(newMetadata);
-    window.open(url, '_blank');
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Window_functionality_features
+    // reckons `noreferrer` implies `noopener`; we're including both for a belt and braces approach
+    window.open(url, '_blank', 'noreferrer,noopener');
   }
 
   render() {
