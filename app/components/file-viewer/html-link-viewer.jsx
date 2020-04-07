@@ -38,9 +38,15 @@ class HTMLLinkViewer extends React.Component {
   render() {
     return (
       <div className="html-link-viewer">
+        <div>
+          <span className="html-link-viewer__number">1.</span> Click the button below to open the article
+        </div>
         <button className="standard-button" onClick={this.onClick} role="link">
-          Click to open the article in a new tab / window
+          Open article
         </button>
+        <div>
+          <span className="html-link-viewer__number">2.</span> Select the appropriate category
+        </div>
       </div>
     )
   }
