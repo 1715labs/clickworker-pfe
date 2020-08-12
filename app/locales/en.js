@@ -30,10 +30,19 @@ export default {
       studyInfo: 'I do not want to take part in this messaging [study](+tab+https://docs.google.com/document/d/1gLyN6Dgff8dOCOC88f47OD6TtFrfSJltsLgJMKkYMso/preview).'
     }
   },
+  projects: {
+    welcome: {
+      heading: "Welcome! We're so glad you're here",
+      thanks: "Thank you for your interest in helping real research. Here we've gathered a few projects we could really use your help on right now. For more options just scroll down to browse all of our active projects.",
+      talk: "Make sure to also check out [Talk](/talk) where you can chat to other like-minded volunteers.",
+      scrollDown: "Scroll down for even more"
+    }
+  },
   project: {
     language: 'Language',
     loading: 'Loading project',
     disclaimer: 'This project has been built using the Zooniverse Project Builder but is not yet an official Zooniverse project. Queries and issues relating to this project directed at the Zooniverse Team may not receive any response.',
+    fieldGuide: 'Field Guide',
     about: {
       header: 'About',
       nav: {
@@ -119,7 +128,33 @@ export default {
     loading: 'Loading organization',
     notFound: 'organization not found.',
     notPermission: 'If you\'re sure the URL is correct, you might not have permission to view this organization.',
-    pleaseWait: 'Please wait...'
+    pleaseWait: 'Please wait...',
+    stats: {
+      adjustParameters: 'Adjust Parameters',
+      byTheNumbers: 'By the Numbers',
+      byTheNumbersContent: {
+        classifications: 'Classifications',
+        firstProject: 'First Project',
+        firstProjectLaunch: 'First Project Launch Date',
+        liveProjects: 'Live Projects',
+        pausedProjects: 'Paused Projects',
+        retiredProjects: 'Retired Projects',
+        retiredSubjects: 'Completed Subjects',
+        subjects: 'Subjects'
+      },
+      classification: 'Classifications',
+      comment: 'Talk Comments',
+      dateRange: 'Date range',
+      expandWorkflowStats: 'Expand Workflow Stats',
+      for: 'for',
+      hidden: 'Stats hidden',
+      hourly: 'Hourly data only available for the most recent 2 weeks.',
+      organizationStatistics: '%(title)s Statistics',
+      perclassification: 'Classifications per',
+      percomment: 'Comments per',
+      projectStats: 'Live Projects (%(count)s)',
+      reset: 'Reset view'
+    }
   },
   tasks: {
     hidePreviousMarks: 'Hide previous marks %(count)s',
@@ -230,7 +265,9 @@ export default {
       classify: 'Get email updates when you first classify on a project',
       note: 'Note: Unticking the box will not unsubscribe you from any of the projects',
       manual: 'Manage projects individually',
-      beta: 'Get beta project email updates and become a beta tester'
+      beta: 'Get beta project email updates and become a beta tester',
+      partnerPreferences: 'Zooniverse partner email preferences',
+      nasa: 'Get periodic email updates from NASA regarding broader NASA citizen science projects and efforts'
     },
     talk: {
       section: 'Talk email preferences',
@@ -702,9 +739,9 @@ export default {
       paragraphTwo: 'Over the past decade, Zooniverse projects have led to many unexpected and scientifically significant discoveries and over 160 [peer-reviewed publications](https://zooniverse.org/publications). All of this would have been impossible if it weren’t for our global community of nearly 2 million people working alongside hundreds of professional researchers.',
       paragraphThree: 'The book is an homage to the Zooniverse Year of 2019, highlighting 40 Zooniverse projects out of more than 200 launched to date. There are many fascinating projects we weren’t able to include this year. We hope to continue creating these books annually, highlighting a whole new set of projects and discoveries next year!',
       toDownload: '**To download a free electronic copy:**',
-      download: 'Please click [here](http://bit.ly/zoonibook19-pdf) to download a free electronic copy of ‘Into the Zooniverse’.',
+      download: 'Please click [here](https://bit.ly/zoonibook19-pdf-new) to download a free electronic copy of ‘Into the Zooniverse’.',
       toOrder: '**To order a hard copy:**',
-      order: 'Please click [here](http://bit.ly/zoonibook19-buy) if you would like to order a hard copy of ‘Into the Zooniverse’. Note, the cost simply covers Lulu.com’s printing and postage fees - we will not be making any profit through sales of the hard copy of the book.',
+      order: 'Please click [here](https://bit.ly/zoonibook19-buy-new) if you would like to order a hard copy of ‘Into the Zooniverse’. Note, the cost simply covers Lulu.com’s printing and postage fees - we will not be making any profit through sales of the hard copy of the book.',
       credits: 'A special thank you to our volunteers (Mark Benson, Caitlyn Buongiorno, Leslie Grove, and Andrew Salata) who wrote text, vetted it with research teams, and designed the book in collaboration with Zooniverse designer Becky Rother. We’re so thankful to them for their time and efforts.'
     },
     donate: {
@@ -767,10 +804,10 @@ export default {
       title: '## Education in the Zooniverse',
       becomeCitizenScientist: 'As a volunteer on these websites, both you and your students can become citizen scientists and citizen researchers, participating in real science and other research. If you or your students think you have make a mistake, don’t worry; even the researchers make mistakes. These projects are set up to have more than one volunteer analyzing each piece of data, thereby eliminating the vast majority of human error. Mistakes are a part of the process, and can even help us evaluate the difficulty of the data. As long as everyone does their best, they are helping!',
       resources: '### Resources for educators using Zooniverse',
-      zooTeach: '- [ZooTeach](http://www.zooteach.org/) is a repository of lessons and resources for teachers. At ZooTeach, you will find a variety of resources for education, including: guides to projects for students and teachers, teacher-created presentations designed to introduce students to a particular project, and lessons developed to connect your students to projects and research within the context of things they already know.',
+      zooniverseClassrooms: '- Instructors and volunteers alike can access a variety of educational resources on the [Zooniverse Classrooms](https://classroom.zooniverse.org/) platform. The ASTRO 101 materials are currently targeted towards introductory college-level students, while WildCam Labs are aimed at a broader audience of students. We are currently working to expand our curricular materials to additional projects on the Zooniverse platform.',
       educationPages: '- Many Zooniverse projects have their own education pages with additional resources for teachers. Resources may include a video tutorial of how to use the project, other helpful documents and videos about the classification process, and education resources related to the research behind the project.',
       joinConversationTitle: '### Take part in the conversation',
-      joinConversationBody: 'Keep up with the latest Zooniverse educational efforts on the [Zooniverse Blog](http://blog.zooniverse.org/) or by following [&#64;zooteach](https://twitter.com/ZooTeach) on Twitter. You can also talk with other Zooniverse educators and peers interested in using people-powered research in all sorts of learning environments on the [Zooniverse Education Talk board](http://zooniverse.org/talk/16).',
+      joinConversationBody: 'Keep up with the latest Zooniverse educational efforts on the [Zooniverse Blog](http://blog.zooniverse.org/). You can also talk with other Zooniverse educators and peers interested in using people-powered research in all sorts of learning environments on the [Zooniverse Education Talk board](http://zooniverse.org/talk/16).',
       howEducatorsUseZooniverse: '### How are educators using Zooniverse?',
       inspiration: 'Looking for a little inspiration? Here are some ways educators have used Zooniverse projects and educational resources:',
       floatingForests: '- [Floating Forests: Teaching Young Children About Kelp](http://blog.zooniverse.org/2015/04/29/floating-forests-teaching-young-children-about-kelp/)',
@@ -1038,6 +1075,13 @@ export default {
       changeProfileHeader: 'Change profile header',
       profileHeaderImageHelp: 'Drop an image here (any dimensions, less than %(size)s KB)',
       clearHeader: 'Clear header'
+    }
+  },
+  feedback: {
+    categories: {
+      correct: 'Hits',
+      incorrect: 'Misses',
+      falsepos: 'False Positives'
     }
   }
 };

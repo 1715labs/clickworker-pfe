@@ -18,6 +18,7 @@ createReactClass = require 'create-react-class'
 `import Grantbot from './pages/admin/grantbot';`
 `import OrganizationStatusList from './pages/admin/organization-status-list';`
 `import OrganizationStatus from './pages/admin/organization-status';`
+`import EditProjectTalk from './pages/lab/talk';`
 `import EditMediaPage from './pages/lab/media';`
 `import UserProfilePage from './pages/profile/index';`
 `import NotificationsPage from './pages/notifications';`
@@ -57,6 +58,7 @@ createReactClass = require 'create-react-class'
 `import DevClassifierPage from './pages/dev-classifier';`
 `import Resources from './pages/about/resources-page';`
 `import DataExports from './pages/lab/data-exports';`
+`import TalkTags from './talk/tags';`
 
 # <Redirect from="home" to="/" /> doesn't work.
 ONE_UP_REDIRECT = createReactClass
@@ -64,7 +66,7 @@ ONE_UP_REDIRECT = createReactClass
     givenPathSegments = @props.location.pathname.split '/'
     givenPathSegments.pop()
     pathOneLevelUp = givenPathSegments.join '/'
-    @props.history.replace
+    @props.router.replace
       pathname: pathOneLevelUp,
       query: @props.location.query
 
@@ -172,7 +174,7 @@ module.exports =
         <Route path="moderations" component={require './talk/moderations'} />
         <Route path="subjects/:id" component={SubjectPageController} />
         <Route path="recents/:board" component={require './talk/recents'} />
-        <Route path="tags/:tag" component={require './talk/tags'} />
+        <Route path="tags/:tag" component={TalkTags} />
         <Route path=":board" component={require './talk/board'} />
         <Route path=":board/:discussion" component={require './talk/discussion'} />
       </Route>
@@ -205,6 +207,7 @@ module.exports =
     <Route path="organizations/:owner/:name" component={(require './pages/organization/organization-container').default}>
       <IndexRoute component={(require './pages/organization/organization-page').default} />
       <Route path="home" component={ONE_UP_REDIRECT} />
+      <Route path="stats" component={(require './pages/organization/stats').default} />
     </Route>
 
     <Route path="notifications" component={NotificationsPage} />
@@ -252,7 +255,7 @@ module.exports =
       <Route path="collaborators" component={require './pages/lab/collaborators'} />
       <Route path="media" component={EditMediaPage} />
       <Route path="visibility" component={require './pages/lab/visibility'} />
-      <Route path="talk" component={require './pages/lab/talk'} />
+      <Route path="talk" component={EditProjectTalk} />
       <Route path="data-exports" component={DataExports} />
       <Route path="tutorial" component={require './pages/lab/tutorial'} />
       <Route path="guide" component={require './pages/lab/field-guide'} />

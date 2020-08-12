@@ -12,7 +12,7 @@ import MyBuildsSection from './my-builds';
 import HomePageSocial from '../home-common/social';
 import getColorFromString from '../../lib/get-color-from-string';
 import mediaActions from '../lab/actions/media';
-import FeaturedProject from '../home-common/featured-project';
+import FeaturedProjects from '../home-common/featured-projects';
 
 const SECTIONS = {
   projects: RecentProjectsSection,
@@ -26,7 +26,7 @@ export default class HomePageForUser extends React.Component {
     super(props);
     this.state = {
       backgroundSrc: '',
-      featuredProject: null,
+      featuredProjects: [],
       totalClassifications: 0,
       ribbonData: [],
       loading: false,
@@ -45,7 +45,7 @@ export default class HomePageForUser extends React.Component {
 
   componentDidMount() {
     this.fetchRibbonData(this.props.user);
-    this.getFeaturedProject();
+    this.getFeaturedProjects();
     this.handleHashChange();
   }
 
@@ -69,11 +69,11 @@ export default class HomePageForUser extends React.Component {
     this.setState({ OpenSectionComponent });
   }
 
-  getFeaturedProject() {
+  getFeaturedProjects() {
     const query = { featured: true, launch_approved: true, cards: true };
     return apiClient.type('projects').get(query)
-      .then(([featuredProject]) => {
-        this.setState({ featuredProject });
+      .then((featuredProjects) => {
+        this.setState({ featuredProjects });
       });
   }
 
@@ -121,44 +121,49 @@ export default class HomePageForUser extends React.Component {
       if (projectPreferences.length === 0) {
         return projectPreferences;
       } else {
-        let activePreferences = projectPreferences.filter((preference) => { return preference.activity_count > 0; });
-        activePreferences = activePreferences.map((preference, i) => {
-          preference.sort_order = i;
-          return preference;
-        });
-        this.getProjectsForPreferences(activePreferences)
-          .then((projects) => {
-            return projects
-            .sort((a, b) => {
-              return a.sort_order - b.sort_order;
-            })
-            .filter(Boolean)
-            .map((project, i) => {
-              return {
-                avatar_src: projects[i].avatar_src,
-                id: projects[i].id,
-                slug: projects[i].slug,
-                display_name: projects[i].display_name,
-                description: projects[i].description,
-                color: getColorFromString(projects[i].slug),
-                classifications: projects[i].activity_count,
-                updated_at: projects[i].updated_at,
-                redirect: projects[i].redirect
-              };
-            });
-          })
-          .then((projects) => {
-            this.setState((prevState) => {
-              const ribbonData = prevState.ribbonData.concat(projects);
-              const totalClassifications = ribbonData.reduce((total, project) => {
-                return total + project.classifications;
-              }, 0);
-              return { ribbonData, totalClassifications };
-            });
-          });
+        // continue paging through preferences until we've got them all.
         const meta = projectPreferences[0].getMeta();
         if (meta.page !== meta.page_count) {
           getRibbonData(user, meta.page + 1);
+        }
+        // filter out projects you haven't classified on.
+        let activePreferences = projectPreferences.filter((preference) => { return preference.activity_count > 0; });
+        // get the projects that you have classified on, if any.
+        if (activePreferences.length > 0) {
+          activePreferences = activePreferences.map((preference, i) => {
+            preference.sort_order = i;
+            return preference;
+          });
+          this.getProjectsForPreferences(activePreferences)
+            .then((projects) => {
+              return projects
+              .sort((a, b) => {
+                return a.sort_order - b.sort_order;
+              })
+              .filter(Boolean)
+              .map((project, i) => {
+                return {
+                  avatar_src: projects[i].avatar_src,
+                  id: projects[i].id,
+                  slug: projects[i].slug,
+                  display_name: projects[i].display_name,
+                  description: projects[i].description,
+                  color: getColorFromString(projects[i].slug),
+                  classifications: projects[i].activity_count,
+                  updated_at: projects[i].updated_at,
+                  redirect: projects[i].redirect
+                };
+              });
+            })
+            .then((projects) => {
+              this.setState((prevState) => {
+                const ribbonData = prevState.ribbonData.concat(projects);
+                const totalClassifications = ribbonData.reduce((total, project) => {
+                  return total + project.classifications;
+                }, 0);
+                return { ribbonData, totalClassifications };
+              });
+            });
         }
       }
     });
@@ -169,26 +174,26 @@ export default class HomePageForUser extends React.Component {
       return projectPreference.links.project;
     });
     return apiClient
-    .type('projects')
-    .get({ id: projectIDs, cards: true, page_size: preferences.length })
-    .catch((error) => {
-      console.log('Something went wrong. Error: ', error);
-    })
-    .then((projects) => {
-      const classifications = preferences.reduce((counts, projectPreference) => {
-        counts[projectPreference.links.project] = projectPreference.activity_count;
-        return counts;
-      }, {});
-      const sortOrders = preferences.reduce((orders, projectPreference) => {
-        orders[projectPreference.links.project] = projectPreference.sort_order;
-        return orders;
-      }, {});
-      return projects.map((project) => {
-        project.activity_count = classifications[project.id];
-        project.sort_order = sortOrders[project.id];
-        return project;
+      .type('projects')
+      .get({ id: projectIDs, cards: true, page_size: preferences.length })
+      .catch((error) => {
+        console.log('Something went wrong. Error: ', error);
+      })
+      .then((projects) => {
+        const classifications = preferences.reduce((counts, projectPreference) => {
+          counts[projectPreference.links.project] = projectPreference.activity_count;
+          return counts;
+        }, {});
+        const sortOrders = preferences.reduce((orders, projectPreference) => {
+          orders[projectPreference.links.project] = projectPreference.sort_order;
+          return orders;
+        }, {});
+        return projects.map((project) => {
+          project.activity_count = classifications[project.id];
+          project.sort_order = sortOrders[project.id];
+          return project;
+        });
       });
-    });
   }
 
   deselectSection() {
@@ -249,7 +254,7 @@ export default class HomePageForUser extends React.Component {
 
   render() {
     if (!this.props.user) return null;
-    const { featuredProject, OpenSectionComponent } = this.state;
+    const { featuredProjects, OpenSectionComponent } = this.state;
     return (
       <div className="on-home-page" ref={(node) => { this.node = node; }}>
         <div className="home-page-for-user">
@@ -294,7 +299,7 @@ export default class HomePageForUser extends React.Component {
           </div>
         </div>
 
-        <FeaturedProject project={featuredProject} />
+        <FeaturedProjects projects={featuredProjects} />
 
         <HomePageSocial />
 

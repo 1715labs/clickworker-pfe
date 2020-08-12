@@ -30,6 +30,7 @@ export default {
     language: 'Sprache',
     loading: 'Projekt wird geladen',
     disclaimer: 'Dieses Projekt wurde mit dem Zooniverse Project Builder gebaut, ist aber derzeit noch kein offizielles Zooniverse Projekt. Anfragen und Probleme bezüglich dieses Projekts an das Zooniverse Team könnten unbeantwortet bleiben.',
+    fieldGuide: 'Benutzerhandbuch',
     about: {
       header: 'Über',
       nav: {
@@ -213,7 +214,9 @@ export default {
       classify: 'Erhalte Projekt-Neuigkeiten per E-Mail, wenn Du beginnst in einem Projekt zu klassifizieren',
       note: 'Beachte: Nicht-Auswählen dieser Box wird keine Auswirkungen auf andere Projekte haben.',
       manual: 'Verwalte Projekte individuell',
-      beta: 'Erhalte E-Mails über Projekte in der Beta-Testung und werde Beta-Tester!'
+      beta: 'Erhalte E-Mails über Projekte in der Beta-Testung und werde Beta-Tester!',
+      partnerPreferences: 'Zooniverse partner email preferences',
+      nasa: 'Get periodic email updates from NASA regarding broader NASA citizen science projects and efforts'
     },
     talk: {
       section: 'E-Mail-Präferenzen für Talk',
@@ -747,10 +750,10 @@ export default {
       title: '## Bildung bei Zooniverse',
       becomeCitizenScientist: 'Als Freiwilliger auf diesen Websites können sowohl Sie als auch Ihre Schüler Bürgerwissenschaftler und Bürgerforscher werden und an echten wissenschaftlichen Projekten teilnehmen. Wenn Sie oder Ihre Schüler glauben, Sie hätten einen Fehler gemacht, machen Sie sich keine Sorgen. Auch Forscher machen Fehler. Unsere Projekte sind so angelegt, dass mehr als ein Freiwilliger jedes Subjekt / Datenelement analysiert, wodurch die überwiegende Mehrheit der menschlichen Fehler beseitigt wird. Fehler sind Teil des Prozesses und können uns sogar dabei helfen, die Schwierigkeit der Daten zu bewerten. Solange alle ihr Bestes geben, helfen sie!',
       resources: '### Ressourcen für Pädagogen zur Nutzung von Zooniverse (in englischer Sprache)',
-      zooTeach: '- [ZooTeach](http://www.zooteach.org/) ist eine Sammlung von Lektionen und Ressourcen für Lehrer. Bei ZooTeach finden Sie eine Vielzahl von Ressourcen für den Unterricht - darunter: Leitfäden für Projekte für Schüler und Lehrer, von Lehrern erstellte Präsentationen zur Heranführung von Schülern an ein bestimmtes Projekt sowie Beispiellektionen, um Ihre Schüler mit Projekten und Forschung in einem Kontext, den sie schon kennen, bekanntzumachen.',
+      zooniverseClassrooms: '- Instructors and volunteers alike can access a variety of educational resources on the [Zooniverse Classrooms](https://classroom.zooniverse.org/) platform. The ASTRO 101 materials are currently targeted towards introductory college-level students, while WildCam Labs are aimed at a broader audience of students. We are currently working to expand our curricular materials to additional projects on the Zooniverse platform.',
       educationPages: '- Viele Zooniverse Projekte haben eigene Bildungsseiten mit zusätzlichen Ressourcen für Lehrer. Zu diesen Ressourcen gehören ein Video-Tutorial zur Nutzung des Projekts, andere hilfreiche Dokumente und Videos zum Klassifizierungsprozess sowie Unterrichtsmaterialien zur Forschungshintergrund.',
       joinConversationTitle: '### Beteiligen Sie sich an der Konversation',
-      joinConversationBody: 'Bleiben Sie auf dem Laufenden über die neuesten Bildungsbemühungen von Zooniverse im [Zooniverse Blog](http://blog.zooniverse.org/) oder folgen Sie [&#64;zooteach](https://twitter.com/ZooTeach) bei Twitter. Sie können sich auch mit anderen Zooniverse Pädagogen und weiteren an diesen Lernumgebungen interessierten Personen auf dem [Zooniverse Education Talk Forum](http://zooniverse.org/talk/16) (in Englisch) unterhalten.',
+      joinConversationBody: 'Bleiben Sie auf dem Laufenden über die neuesten Bildungsbemühungen von Zooniverse im [Zooniverse Blog](http://blog.zooniverse.org/). Sie können sich auch mit anderen Zooniverse Pädagogen und weiteren an diesen Lernumgebungen interessierten Personen auf dem [Zooniverse Education Talk Forum](http://zooniverse.org/talk/16) (in Englisch) unterhalten.',
       howEducatorsUseZooniverse: '### Wie nutzen Lehrer Zooniverse?',
       inspiration: 'Brauchen Sie ein bisschen Inspiration? Hier einige Möglichkeiten, wie Lehrer Zooniverse Projekte und deren Bildungsressourcen genutzt haben:',
       floatingForests: '- [Floating Forests: Teaching Young Children About Kelp](http://blog.zooniverse.org/2015/04/29/floating-forests-teaching-young-children-about-kelp/)',

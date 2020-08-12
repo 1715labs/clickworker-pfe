@@ -7,7 +7,7 @@ export default {
     continue: 'Continua',
     detailsSubTaskFormSubmitButton: 'OK',
     done: 'Completato',
-    doneAndTalk: 'Done & Talk',
+    doneAndTalk: 'Concludi e Commenta',
     dontShowMinicourse: 'Non mostrare più il mini corso',
     letsGo: 'Inizia!',
     next: 'Avanti',
@@ -18,7 +18,7 @@ export default {
     },
     recents: 'Your recent classifications',
     talk: 'Talk',
-    taskHelpButton: 'Need some help with this task?',
+    taskHelpButton: 'Hai bisogno di aiuto?',
     miniCourseButton: 'Restart the project mini-course',
     workflowAssignmentDialog: {
       promotionMessage: "Congratulations! You've unlocked the next workflow. If you prefer to stay on this workflow, you can choose to stay.",
@@ -33,13 +33,14 @@ export default {
     language: 'Lingua',
     loading: 'Caricamento progetto',
     disclaimer: "Questo progetto è stato creato con il Project Builder di Zooniverse, ma non è ancora un progetto ufficiale. Per questo motivo è possibile che domande su questo progetto dirette al Team Zooniverse non ricevano una risposta.",
+    fieldGuide: 'Guida Pratica',
     about: {
       header: 'About',
       nav: {
         research: 'Ricerca',
         results: 'Risultati',
         faq: 'FAQ',
-        education: 'Education',
+        education: 'Approfondimento',
         team: 'Il Team',
       }
     },
@@ -78,7 +79,7 @@ export default {
         other: '**%(count)s** persone stanno parlando di **%(title)s** in questo momento.'
       },
       joinIn: 'Partecipa',
-      learnMore: 'Learn more',
+      learnMore: 'Per saperne di piu',
       getStarted: 'Inizia ora',
       workflowAssignment: 'You\'ve unlocked level %(workflowDisplayName)s',
       visitLink: 'Visita il progetto',
@@ -216,7 +217,9 @@ export default {
       classify: 'Ricevi aggiornamenti sui progetti a cui hai contribuito',
       note: 'Note: Unticking the box will not unsubscribe you from any of the projects',
       manual: 'Manage projects individually',
-      beta: 'Diventa beta-tester e ricevi email sui progetti in beta'
+      beta: 'Diventa beta-tester e ricevi email sui progetti in beta',
+      partnerPreferences: 'Zooniverse partner email preferences',
+      nasa: 'Get periodic email updates from NASA regarding broader NASA citizen science projects and efforts'
     },
     talk: {
       section: 'Preferenze per Talk',
@@ -752,10 +755,10 @@ export default {
       title: '## Education in the Zooniverse',
       becomeCitizenScientist: 'As a volunteer on these websites, both you and your students can become citizen scientists and citizen researchers, participating in real science and other research. If you or your students think you have make a mistake, don’t worry; even the researchers make mistakes. These projects are set up to have more than one volunteer analyzing each piece of data, thereby eliminating the vast majority of human error. Mistakes are a part of the process, and can even help us evaluate the difficulty of the data. As long as everyone does their best, they are helping!',
       resources: '### Resources for educators using Zooniverse',
-      zooTeach: '- [ZooTeach](http://www.zooteach.org/) is a repository of lessons and resources for teachers. At ZooTeach, you will find a variety of resources for education, including: guides to projects for students and teachers, teacher-created presentations designed to introduce students to a particular project, and lessons developed to connect your students to projects and research within the context of things they already know.',
+      zooniverseClassrooms: '- Instructors and volunteers alike can access a variety of educational resources on the [Zooniverse Classrooms](https://classroom.zooniverse.org/) platform. The ASTRO 101 materials are currently targeted towards introductory college-level students, while WildCam Labs are aimed at a broader audience of students. We are currently working to expand our curricular materials to additional projects on the Zooniverse platform.',
       educationPages: '- Many Zooniverse projects have their own education pages with additional resources for teachers. Resources may include a video tutorial of how to use the project, other helpful documents and videos about the classification process, and education resources related to the research behind the project.',
       joinConversationTitle: '### Take part in the conversation',
-      joinConversationBody: 'Keep up with the latest Zooniverse educational efforts on the [Zooniverse Blog](http://blog.zooniverse.org/) or by following [&#64;zooteach](https://twitter.com/ZooTeach) on Twitter. You can also talk with other Zooniverse educators and peers interested in using people-powered research in all sorts of learning environments on the [Zooniverse Education Talk board](http://zooniverse.org/talk/16).',
+      joinConversationBody: 'Keep up with the latest Zooniverse educational efforts on the [Zooniverse Blog](http://blog.zooniverse.org/). You can also talk with other Zooniverse educators and peers interested in using people-powered research in all sorts of learning environments on the [Zooniverse Education Talk board](http://zooniverse.org/talk/16).',
       howEducatorsUseZooniverse: '### How are educators using Zooniverse?',
       inspiration: 'Looking for a little inspiration? Here are some ways educators have used Zooniverse projects and educational resources:',
       floatingForests: '- [Floating Forests: Teaching Young Children About Kelp](http://blog.zooniverse.org/2015/04/29/floating-forests-teaching-young-children-about-kelp/)',

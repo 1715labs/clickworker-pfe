@@ -343,7 +343,7 @@ class OrganizationPage extends React.Component {
                     </div>
                     <Link
                       className="organization-researcher-words__attribution"
-                      to={quoteObject.slug}
+                      to={`/projects/${quoteObject.slug}`}
                     >
                       {' - '}
                       {quoteObject.displayName}
@@ -368,6 +368,7 @@ class OrganizationPage extends React.Component {
               <OrganizationMetadata
                 displayName={organization.display_name}
                 projects={organizationProjects}
+                slug={organization.slug}
               />
             </div>
 
