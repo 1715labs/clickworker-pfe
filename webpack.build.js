@@ -43,7 +43,8 @@ module.exports = {
       'PANOPTES_API_HOST',
       'STAT_HOST',
       'SUGAR_HOST',
-      'TALK_HOST'
+      'TALK_HOST',
+      'REDIRECT_URL',
     ]),
     new CopyWebpackPlugin([
       { from: 'public', to: '.' },
