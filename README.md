@@ -1,3 +1,9 @@
+# ARCHIVED
+
+Use https://github.com/1715labs/1715labs-pfe instead, it handles multiple crowds.
+
+---
+
 # Panoptes Front End for Clickworker
 
 A modified version of [Panoptes-Front-End](https://github.com/zooniverse/Panoptes-Front-End) for serving up projects to the [Clickworker](https://www.clickworker.com/) crowd.
